@@ -1,16 +1,15 @@
-import Button from "./Button";
-import RedButton from "./Button/RedButton";
+import styled from "styled-components";
+import Sidebar from "./components/Sidebar";
+import PageContent from "./components/PageContent";
+
+const Container = styled.div``;
 
 function App() {
-  const handleClick = () => {
-    console.log("Butona tıklandı!");
-  };
-
   return (
-    <div>
-      <Button onClick={handleClick}>Default Button</Button>
-      <RedButton onClick={handleClick}>RedButton</RedButton>
-    </div>
+    <Container>
+      <Sidebar />
+      <PageContent />
+    </Container>
   );
 }
 
