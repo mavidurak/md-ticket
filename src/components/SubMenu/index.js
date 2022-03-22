@@ -16,6 +16,6 @@ const Link = styled.a`
   }
 `;
 
-export default function SubMenuX({ children, ...props }) {
+export default function SubMenu({ children, ...props }) {
   return <Link {...props}>{children}</Link>;
 }
