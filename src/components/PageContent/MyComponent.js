@@ -1,40 +1,25 @@
-import { useEffect, useState } from "react";
+import styled from "styled-components";
 
-// UI = f(props + state)
-/**
- * MEMORY:
- *
- * STATA-0: 101
- */
-/*
+const Parent = styled.div`
+  background: yellow;
+  padding: 20px;
+`;
 
-          A
-   B      C          D 
-B1 B2   C1 C2    D1     D2
-   ad          button  email
-
-
-*/
+const Content = styled.div`
+  background: purple;
+  color: white;
+  border: 10px solid red;
+  width: 100%;
+`;
 
 export default function MyComponent({ initialValue }) {
-  const [state, setState] = useState(initialValue);
-  // const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   console.log("Data geliyor");
-  //   fetch("https://api.ikinciel.dev/api/places").then(async (response) => {
-  //     const { data } = await response.json();
-  //     console.log("Data geldi");
-  //     setData(data);
-  //   });
-  // }, []);
-
-  console.log("RENDER");
-
   return (
-    <div style={{ padding: "10px" }}>
-      <div>Value: {state}</div>
-      <button onClick={() => setState(state + 1)}>Arttır</button>
-    </div>
+    <>
+      <Parent>
+        <Content>
+          <div>MyContent</div>
+        </Content>
+      </Parent>
+    </>
   );
 }
