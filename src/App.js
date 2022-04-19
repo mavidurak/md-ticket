@@ -1,22 +1,19 @@
-import styled from "styled-components";
 import { Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import PageContent from "./components/PageContent";
-import { HomePage, AboutPage } from "./pages";
-
-const Container = styled.div``;
+import { HomePage, AboutPage, LoginPage } from "./pages";
+import PrivateLayout from "./layout/PrivateLayout";
+import PublicLayout from "./layout/PublicLayout";
 
 function App() {
   return (
-    <Container>
-      <Sidebar />
-      <PageContent>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
-        </Routes>
-      </PageContent>
-    </Container>
+    <Routes>
+      <Route element={<PrivateLayout />}>
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/" element={<HomePage />} />
+      </Route>
+      <Route element={<PublicLayout />}>
+        <Route path="/login" element={<LoginPage />} />
+      </Route>
+    </Routes>
   );
 }
 
