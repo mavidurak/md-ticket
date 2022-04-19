@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 import Logo from "../Logo";
 import { MD_800 } from "../colors";
 import SidebarMenu from "../SidebarMenu";
@@ -20,6 +21,9 @@ const SidebarMenus = styled.div`
 `;
 
 export default function Sidebar() {
+  const auth = useSelector((state) => state.auth);
+  console.log("Sidebar rendered!", auth);
+
   return (
     <Container>
       <Logo />

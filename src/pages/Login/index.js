@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { login } from "../../store/authSlice";
 
 const Container = styled.div`
   position: fixed;
@@ -58,13 +61,32 @@ const Button = styled.button`
 `;
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const getLoggedUserData = () => {
+    // checking the user from api
+    return {
+      id: 1,
+      name: "Özgür",
+    };
+  };
+
+  const handleClick = () => {
+    const user = getLoggedUserData();
+    dispatch(login(user));
+    navigate("/");
+  };
+
   return (
     <Container>
       <Title>Login</Title>
       <Form>
         <Input type="text" placeholder="john@mail.com" />
         <Input type="password" placeholder="your secret password" />
-        <Button type="button">Log in</Button>
+        <Button type="button" onClick={handleClick}>
+          Log in
+        </Button>
       </Form>
     </Container>
   );
