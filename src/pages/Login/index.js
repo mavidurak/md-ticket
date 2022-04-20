@@ -7,7 +7,8 @@ const Container = styled.div`
   position: fixed;
   top: 200px;
   width: 400px;
-  background-color: #363636;
+  background-color: rgba(54,54,54,0.5);
+  backdrop-filter : blur(5px);
   left: 0px;
   right: 0px;
   margin: auto;
