@@ -1,25 +1,46 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "../../store/authSlice";
+import { useState } from "react";
+import BadPhoneInput from "./BadPhoneInput";
+import GoodPhoneInput from "./GoodPhoneInput";
 
 export default function HomePage() {
-  console.log("RENDER HomePage");
-  const dispatch = useDispatch();
+  const [state, setState] = useState({
+    good: {
+      area: "212",
+      phone: "1112233",
+    },
+    bad: "212-1112233",
+  });
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      console.log("timeout function");
-      dispatch(logout());
-    }, 5000);
-
-    return () => clearTimeout(timeout);
-  }, []);
+  const handleClick = () => {
+    setState({
+      good: {
+        area: "999",
+        phone: "8887766",
+      },
+      bad: "9998887766",
+    });
+  };
 
   return (
     <>
-      <h2 className="test-class">Home Page!</h2>
-      <Link to="/about">Go to About</Link>
+      <h1>
+        HomePage: {state.area}-{state.phone}
+      </h1>
+      Good:
+      <GoodPhoneInput
+        state={state.good}
+        setState={(value) => setState({ ...state, good: value })}
+      />
+      <br />
+      Bad:
+      <BadPhoneInput
+        value={state.bad}
+        onChange={(value) => setState({ ...state, bad: value })}
+      />
+      <br />
+      <button type="button" onClick={handleClick}>
+        Set new phone
+      </button>
     </>
   );
 }
